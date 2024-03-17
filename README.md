@@ -8,7 +8,8 @@ OpenAI GPT integration project using Python.
 This project provide the below features:
 - `OpenAI Chat`
   - "Given a list of messages comprising a conversation, the model will return a response."
-
+- `Token Counter`
+  - Counts how many tokens exist in the input, estimate the output tokens, and then select a proper model to use it.
 
 ## Installation
 
@@ -61,6 +62,7 @@ Then access the application, clicking in the link: http://127.0.0.1:8000/
 - [Django](https://www.djangoproject.com/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
 - [OpenAI Python API library](https://pypi.org/project/openai/)
+- [tiktoken](https://pypi.org/project/tiktoken/)
 
 For more all the libraries, check `requirements.txt` file.
 

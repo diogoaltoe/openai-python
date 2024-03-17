@@ -1,4 +1,4 @@
-from chatbot.infra.openai_client import OpenAiClient
+from chatbot.infra.open_ai_client import OpenAiClient
 
 
 def answer_question(user_prompt):
