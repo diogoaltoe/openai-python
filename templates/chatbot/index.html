@@ -5,7 +5,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Chatbot</title>
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
     <link rel="stylesheet" href="{% static '/chatbot/css/style.css' %}">
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
@@ -27,7 +26,7 @@
           <label class="btn btn-outline-primary" for="assistant">Assistant</label>
         </div>
         <div class="chatbot-header-clear">
-          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-trash"></i></button>
+          <button class="btn btn-primary" id="chatbot-clean"><i class="fa-solid fa-trash"></i></button>
         </div>
       </header>
 
@@ -44,7 +43,11 @@
             </div>
 
             <div class="msg-text">
-              Hi, welcome to Chatbot! Go ahead and send me a message. 😄
+              Hi!<br />
+              Welcome to EcoMart.<br />
+              I'm a chatbot that will help you.<br />
+              It is important to note that I do not consider the history of our conversation when answering a new question.<br />
+              Go ahead and send me a message. 😄
             </div>
           </div>
         </div>

@@ -12,6 +12,8 @@ This project provide the below features:
   - Consider specific exception scenarios to handle it. 
 - `Token Counter`
   - Counts how many tokens exist in the input, estimate the output tokens, and then select a proper model to use it.
+- `Chatbot UI`
+  - Frontend application in HTML, CSS and Javascript to interaction with the solution.
 
 ## Installation
 
@@ -65,6 +67,7 @@ Then access the application, clicking in the link: http://127.0.0.1:8000/
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
 - [OpenAI Python API library](https://pypi.org/project/openai/)
 - [tiktoken](https://pypi.org/project/tiktoken/)
+- [Font Awesome](https://fontawesome.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
 For more all the libraries, check `requirements.txt` file.

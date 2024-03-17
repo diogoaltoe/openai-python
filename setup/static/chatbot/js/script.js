@@ -1,6 +1,7 @@
 const chatbotForm = get('.chatbot-form');
 const userInput = get(".chatbot-input");
 const chatbotChat = get(".chatbot-chat");
+const cleanButton = getById("chatbot-clean");
 
 const BOT_IMG = "robot";
 const PERSON_IMG = "user";
@@ -26,6 +27,8 @@ chatbotForm.addEventListener("submit", event => {
       botResponse(errorMessage);
   })
 });
+
+cleanButton.addEventListener("click", cleanChat);
 
 async function sendMessage(userMessage) {
   const csrftoken = get('[name=csrfmiddlewaretoken]').value;
@@ -82,15 +85,33 @@ function botResponse(message) {
     updateCheckingMessage(message);
 }
 
+function cleanChat() {
+  const userElements = getAll(".msg.right-msg");
+  userElements.forEach(e => e.remove());
+
+  const botElements = getAll(".msg.left-msg");
+  const bots = Array.from(botElements);
+  for (var i = 1; i < bots.length; i++) {
+    bots[i].remove();
+  }
+}
+
 function get(selector, root = document) {
   return root.querySelector(selector);
+}
+
+function getById(id, root = document) {
+  return root.getElementById(id);
+}
+
+function getAll(selector, root = document) {
+  return root.querySelectorAll(selector);
 }
 
 function getLast(selector, root = document) {
   const elements = root.querySelectorAll(selector);
   return elements[elements.length - 1];
 }
-
 
 function formatDate(date) {
   const h = "0" + date.getHours();

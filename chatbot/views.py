@@ -17,11 +17,8 @@ def chat(request):
         try:
             json_data = json.loads(request.body.decode('utf-8'))
             user_message = json_data.get('message', '')
-            print('user_message: ', user_message)
             bot_message = chat_request(user_message)
-            print('bot_message: ', bot_message)
             data = {'message': bot_message}
-            print('data: ', data)
             return JsonResponse(data)
         except json.JSONDecodeError:
             return JsonResponse({'message': 'Invalid JSON'}, status=400)
