@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="{% static '/chatbot/css/style.css' %}">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <section class="chatbot">
+      <header class="chatbot-header">
+        <div class="chatbot-header-title">
+          <i class="fa-solid fa-robot"></i> Chatbot
+        </div>
+        <div class="chatbot-header-clear">
+          <span>
+            <i class="fa-solid fa-trash"></i>
+          </span>
+        </div>
+      </header>
+
+      <main class="chatbot-chat">
+        <div class="msg left-msg">
+          <div class="msg-img">
+            <i class="fa-solid fa-robot fa-2xl"></i>
+          </div>
+
+          <div class="msg-box">
+            <div class="msg-info">
+              <div class="msg-info-name">Bot</div>
+              <div class="msg-info-time">{{ current_time }}</div>
+            </div>
+
+            <div class="msg-text">
+              Hi, welcome to Chatbot! Go ahead and send me a message. 😄
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <form class="chatbot-form" method="POST">
+        {% csrf_token %}
+        <input type="text" class="chatbot-input" placeholder="Enter your message...">
+        <button type="submit" class="chatbot-send-btn">Send</button>
+      </form>
+    </section>
+    <!-- To run the JavaScript file script.js after the HTML document has fully loaded -->
+    <script src="{% static '/chatbot/js/script.js' %}"></script>
+  </body>
+</html>
