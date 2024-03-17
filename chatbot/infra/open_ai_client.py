@@ -39,7 +39,8 @@ class OpenAiClient:
     OPENAI_CLIENT = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     def chat_request(self, system_prompt, user_prompt):
-        model = select_model(system_prompt + user_prompt)
+        prompt = system_prompt + '\n' + user_prompt
+        model = select_model(prompt)
         messages = [
             {
                 "role": "system",

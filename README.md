@@ -8,6 +8,8 @@ OpenAI GPT integration project using Python.
 This project provide the below features:
 - `OpenAI Chat`
   - "Given a list of messages comprising a conversation, the model will return a response."
+- `OpenAI Exception Handler`
+  - Consider specific exception scenarios to handle it. 
 - `Token Counter`
   - Counts how many tokens exist in the input, estimate the output tokens, and then select a proper model to use it.
 
