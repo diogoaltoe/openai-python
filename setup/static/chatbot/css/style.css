@@ -50,6 +50,11 @@ body {
   color: #666;
 }
 
+.chatbot-header-title h4 {
+  margin-bottom: unset;
+  line-height: unset;
+}
+
 .chatbot-chat {
   flex: 1;
   overflow-y: auto;
@@ -119,29 +124,21 @@ body {
 }
 
 .chatbot-form {
-  display: flex;
   padding: 10px;
   border-top: var(--border);
   background: #eee;
 }
+
 .chatbot-form * {
-  padding: 10px;
   border: none;
   border-radius: 3px;
   font-size: 1em;
 }
-.chatbot-input {
-  flex: 1;
-  background: #ddd;
+
+.chatbot-send-box {
+  margin-right: 15px;
 }
-.chatbot-send-btn {
-  margin-left: 10px;
-  background: var(--right-msg-bg);
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.23s;
-}
+
 .chatbot-send-btn:hover {
   background: #398dfa;
 }

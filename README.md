@@ -65,6 +65,7 @@ Then access the application, clicking in the link: http://127.0.0.1:8000/
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
 - [OpenAI Python API library](https://pypi.org/project/openai/)
 - [tiktoken](https://pypi.org/project/tiktoken/)
+- [Bootstrap](https://getbootstrap.com/)
 
 For more all the libraries, check `requirements.txt` file.
 
