@@ -1,7 +1,8 @@
 const chatbotForm = get('.chatbot-form');
-const userInput = get(".chatbot-input");
-const chatbotChat = get(".chatbot-chat");
-const cleanButton = getById("chatbot-clean");
+const userInput = get('.chatbot-input');
+const chatbotChat = get('.chatbot-chat');
+const cleanButton = getById('chatbot-clean');
+const botTypes = getAll('input[name="btnradio"]')
 
 const BOT_IMG = "robot";
 const PERSON_IMG = "user";
@@ -19,6 +20,8 @@ chatbotForm.addEventListener("submit", event => {
 
   appendMessage(BOT_NAME, BOT_IMG, "left", "Checking...");
 
+  const botType = checkBotType();
+
   sendMessage(userMessage)
     .then(botMessage => {
       botResponse(botMessage.replace(/\n/g, '<br />'));
@@ -30,8 +33,10 @@ chatbotForm.addEventListener("submit", event => {
 
 cleanButton.addEventListener("click", cleanChat);
 
+botTypes.forEach(e => e.addEventListener("click", toggleBotType));
+
 async function sendMessage(userMessage) {
-  const csrftoken = get('[name=csrfmiddlewaretoken]').value;
+  const csrftoken = get("[name=csrfmiddlewaretoken]").value;
 
   const response = await fetch("/chat/", {
     method: "POST",
@@ -39,7 +44,7 @@ async function sendMessage(userMessage) {
       "Content-Type": "application/json",
       "X-CSRFToken": csrftoken,
     },
-    body: JSON.stringify({'message': userMessage})
+    body: JSON.stringify({"message": userMessage})
   });
 
   if (response.ok) {
@@ -93,6 +98,46 @@ function cleanChat() {
   const bots = Array.from(botElements);
   for (var i = 1; i < bots.length; i++) {
     bots[i].remove();
+  }
+}
+
+function checkBotType() {
+  var selectedValue = "";
+  botTypes.forEach(function(radioButton) {
+      if (radioButton.checked) {
+          selectedValue = radioButton.value;
+      }
+  });
+  return selectedValue;
+}
+
+function toggleBotType() {
+  cleanChat();
+  updateFirstBotMessage(this.value);
+}
+
+function updateFirstBotMessage(botType) {
+  var elementTime = get(".msg-info-time");
+  elementTime.innerText = formatDate(new Date());
+  var elementMessage = get(".msg-text");
+
+  if (botType == "chat") {
+    elementMessage.innerHTML = `
+      Hi!<br />
+      Welcome to EcoMart.<br />
+      I'm a <b>chat bot</b> that will help you.<br />
+      It is important to note that I do not consider the history of our conversation when answering a new question.<br />
+      Go ahead and send me a message. 😄
+    `;
+  }
+  else {
+    elementMessage.innerHTML = `
+      Hi!<br />
+      Welcome to EcoMart.<br />
+      I'm an <b>assistant bot</b> that will help you.<br />
+      It is important to note that I will consider the history of our conversation when answering a new question.<br />
+      Go ahead and send me a message. 😄
+    `;
   }
 }
 

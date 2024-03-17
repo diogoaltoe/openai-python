@@ -16,13 +16,13 @@
     <section class="chatbot">
       <header class="chatbot-header">
         <div class="chatbot-header-title">
-          <h4><i class="fa-solid fa-robot"></i> Chatbot</h4>
+          <h4><i class="fa-solid fa-robot"></i> EcoMart Chat</h4>
         </div>
         <div class="btn-group" role="group" aria-label="Bot type">
-          <input type="radio" class="btn-check" name="btnradio" id="chat" autocomplete="off" checked>
+          <input type="radio" class="btn-check" name="btnradio" value="chat" id="chat" autocomplete="off" checked>
           <label class="btn btn-outline-primary" for="chat">Chat</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="assistant" autocomplete="off">
+          <input type="radio" class="btn-check" name="btnradio" value="assistant" id="assistant" autocomplete="off">
           <label class="btn btn-outline-primary" for="assistant">Assistant</label>
         </div>
         <div class="chatbot-header-clear">
@@ -45,7 +45,7 @@
             <div class="msg-text">
               Hi!<br />
               Welcome to EcoMart.<br />
-              I'm a chatbot that will help you.<br />
+              I'm a <b>chat bot</b> that will help you.<br />
               It is important to note that I do not consider the history of our conversation when answering a new question.<br />
               Go ahead and send me a message. 😄
             </div>
@@ -53,7 +53,7 @@
         </div>
       </main>
 
-      <div class="container text-center">
+      <div class="container-fluid text-center">
         <form class="row chatbot-form" method="POST">
           {% csrf_token %}
           <div class="col">
