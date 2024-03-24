@@ -21,10 +21,11 @@ chatbotForm.addEventListener("submit", event => {
   appendMessage(BOT_NAME, BOT_IMG, "left", "Checking...");
 
   const botType = checkBotType();
+  const threadId = getFirstByName("thread");
 
-  sendMessage(userMessage)
-    .then(botMessage => {
-      botResponse(botMessage.replace(/\n/g, '<br />'));
+  sendMessage(userMessage, botType, threadId)
+    .then(response => {
+      botResponse(response, botType);
     })
     .catch(errorMessage => {
       botResponse(errorMessage);
@@ -35,21 +36,25 @@ cleanButton.addEventListener("click", cleanChat);
 
 botTypes.forEach(e => e.addEventListener("click", toggleBotType));
 
-async function sendMessage(userMessage) {
+async function sendMessage(userMessage, botType, threadId) {
   const csrftoken = get("[name=csrfmiddlewaretoken]").value;
 
-  const response = await fetch("/chat/", {
+  const response = await fetch("/bot/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-CSRFToken": csrftoken,
     },
-    body: JSON.stringify({"message": userMessage})
+    body: JSON.stringify(
+      {
+        "message": userMessage,
+        "bot": botType,
+        "thread": threadId
+      })
   });
 
   if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse.message;
+      return await response.json();
   } else {
       console.error("Error:", response.status);
       return "Failed to get the response. Status: " + response.status;
@@ -78,16 +83,21 @@ function appendMessage(name, img, side, text) {
   chatbotChat.scrollTop += 500;
 }
 
-function updateCheckingMessage(text) {
+function updateCheckingMessage(response, botType) {
   var elementTime = getLast(".msg-info-time");
   var elementMessage = getLast(".msg-text");
   elementTime.innerText = formatDate(new Date());
-  elementMessage.innerHTML = text;
+
+  const message = response.message.replace(/\n/g, '<br />');
+  const thread = `<input type="hidden" name="thread" value="${response.thread}">`
+  const newMessage = (botType == "chat") ? message : thread + message;
+
+  elementMessage.innerHTML = newMessage;
   chatbotChat.scrollTop += 500;
 }
 
-function botResponse(message) {
-    updateCheckingMessage(message);
+function botResponse(response, botType) {
+    updateCheckingMessage(response, botType);
 }
 
 function cleanChat() {
@@ -147,6 +157,11 @@ function get(selector, root = document) {
 
 function getById(id, root = document) {
   return root.getElementById(id);
+}
+
+function getFirstByName(name, root = document) {
+  const element = root.getElementsByName(name);
+  return element.length > 0 ? element[0].value : "";
 }
 
 function getAll(selector, root = document) {
