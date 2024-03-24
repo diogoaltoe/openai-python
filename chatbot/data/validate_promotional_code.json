@@ -1,0 +1,14 @@
+{
+    "name": "validate_promotional_code",
+    "description": "Validate a promotional code based on the company's Discounts and Promotions policy.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "string",
+                "description": "The promotional code, in the format, COUPON_XX. For example: COUPON_ECO"
+            }
+        },
+        "required": ["code"]
+    }
+}

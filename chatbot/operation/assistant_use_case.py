@@ -1,10 +1,11 @@
 from chatbot.infra.open_ai_client import OpenAiClient
+from chatbot.operation.assistant_function import available_functions, available_tools
 from chatbot.operation.helpers import read_file
 
 
 def answer_question(user_prompt, thread_id):
     client = OpenAiClient()
-    return client.assistant_request(user_prompt, thread_id)
+    return client.assistant_request(user_prompt, thread_id, available_functions)
 
 
 def answer_question_custom(user_prompt, thread_id):
@@ -24,7 +25,7 @@ def answer_question_custom(user_prompt, thread_id):
         {policy}
     """
     client = OpenAiClient()
-    return client.new_assistant_request(system_prompt, user_prompt, thread_id)
+    return client.new_assistant_request(system_prompt, user_prompt, thread_id, available_functions, available_tools)
 
 
 class AssistantUseCase:

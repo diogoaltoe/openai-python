@@ -34,3 +34,9 @@
 
 8. **Ratings and Comments:**
     - We encourage customers to leave reviews and comments on products to help other buyers make informed decisions.
+
+9. **Discounts and Promotions:**
+    - Products from the "Healthy Eating" category have a 10% discount if you use the coupon COUPON_ECO, valid until 05/01/2024
+    - Products from the "Healthy Eating" category have a 15% discount if you use the coupon COUPON_ECO10, valid until 11/01/2024
+    - Products in the "Outdoor Leisure" category have a 10% discount if you use the coupon COUPON_OUT, valid until 12/01/2024
+    - Products in the "Sustainable Fashion" category have a 10% discount if you use the coupon COUPON_FAS, valid until 01/01/2025

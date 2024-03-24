@@ -114,9 +114,9 @@ To work with `Functions` feature, you need to:
 - Select `Assistants` option;
 - In `TOOLS` option:
   - In `Functions`, click in `+Function` button;
-  - Open the `calculateShipping.json` file inside `chatbot/data`, copy the content and paste it in the function field;
+  - Open the `validate_promotional_code.json` file inside `chatbot/data`, copy the content and paste it in the function field;
   - Then, click on `Save` button;
-  - It should save the new function and show below `Functions` the `calculateShipping` function name.
+  - It should save the new function and show below `Functions` the `validate_promotional_code` function name.
 
 ### Run Project
 
@@ -135,15 +135,17 @@ Still at the top right, you have the option to clear the conversation history (`
 
 In the bottom bar, you can enter your message and click the `Send` button to send the message.
 
-#### Example Using in Chat Mode
+#### Example using Chat Mode
 ![Chat Mode](docs/chat.png)
 
-#### Example Using in Assistant Mode
-![Assistant Mode First Message](docs/assistant-first-message.png)
+#### Example using Assistant Mode with Knowledge Retrieval
+![Assistant Mode First Message](docs/assistant-retrieval.png)
 
-#### Example Using in Assistant Mode and Keeping the Historical Context
-![Assistant Mode Second Message](docs/assistant-second-message.png)
+#### Example using Assistant Mode with Knowledge Retrieval and Thread History
+![Assistant Mode Second Message](docs/assistant-thread-history.png)
 
+#### Example using Assistant Mode with Function Calling 
+![Assistant Mode Second Message](docs/assistant-function-calling.png)
 
 ## Libraries
 
